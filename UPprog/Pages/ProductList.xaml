@@ -6,12 +6,88 @@
       xmlns:local="clr-namespace:UPprog.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductList">
-
+      Title="Список продуктов">
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="6*"></RowDefinition>
+
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10">
+                <TextBlock Text="Наименование" HorizontalAlignment="Center"/>
+                <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Сортировка" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
+                    <ComboBoxItem Content="Без сортировки"/>
+                    <ComboBoxItem Content="По возрастанию стоимости"/>
+                    <ComboBoxItem Content="По убыванию стоимости"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="10">
+                <TextBlock Text="Фильтрация" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="cbFilt" SelectionChanged="cbSort_SelectionChanged">
+                    <ComboBoxItem Content="Все диапазоны"/>
+                    <ComboBoxItem Content="0-9,99%"/>
+                    <ComboBoxItem Content="10-14,99%"/>
+                    <ComboBoxItem Content="15% и более"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        <ListView x:Name="lvListProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" Background="{Binding colorBackground}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ProductPhoto}" Width="180" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="{Binding ProductName}" FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Manufacturer.ProductManufacturer, StringFormat={}Производитель: {0}}" TextWrapping="Wrap"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: "/>
+                                    <TextBlock Text="{Binding ProductCost, StringFormat={}{0:F2}}" TextDecorations="{Binding textDecoration}"/>
+                                    <TextBlock Text=" "/>
+                                    <TextBlock Text="{Binding costWithDiscountString}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding ProductDiscountAmount, StringFormat={}{0}%}" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="miAddBasket" Header="Добавить к заказу" Click="miAddBasket_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <Grid Grid.Row="2">
+            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Left" Click="btnBack_Click"/>
+            <Button x:Name="btnBasket" Content="Просмотр корзины"  HorizontalAlignment="Center" Click="btnBasket_Click" Visibility="Collapsed"/>
+        </Grid>
     </Grid>
 </Page>

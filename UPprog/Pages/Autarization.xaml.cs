@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace UPprog.Pages
 {
@@ -20,9 +21,45 @@ namespace UPprog.Pages
     /// </summary>
     public partial class Autarization : Page
     {
+        int kolError;
+        public static bool correctValue;
+        int countTime; // Время для повторного получения кода
+        DispatcherTimer disTimer = new DispatcherTimer();
         public Autarization()
         {
             InitializeComponent();
+            kolError = 0;
+            correctValue = false;
+            disTimer.Interval = new TimeSpan(0, 0, 1);
+            disTimer.Tick += new EventHandler(DisTimer_Tick);
+        }
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            User user = MainWindow.DB.User.FirstOrDefault(x => x.UserLogin == Login.Text && x.UserPassword == Password.Text);
+            if (user != null)
+            {
+                //передать роль 
+                MainWindow.frame.Navigate(new ProductList());
+            }
+            else
+            {
+                if (kolError == 0)
+                {
+                    MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
+                    kolError++;
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+
+
+        private void DisTimer_Tick(object sender, EventArgs e)
+        {
+           
         }
     }
 }

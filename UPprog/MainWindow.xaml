@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Frame x:Name="WindowFrame" Grid.Row="1"></Frame>
-        <Button x:Name="ClientOrBack" Content="Войти как гость" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ClientOrBack" Content="Войти как гость" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top" Click="ClientOrBack_Click"/>
 
     </Grid>
 </Window>

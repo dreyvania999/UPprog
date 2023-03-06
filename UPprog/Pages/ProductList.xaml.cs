@@ -20,6 +20,7 @@ namespace UPprog.Pages
     /// </summary>
     public partial class ProductList : Page
     {
+        public static int CurrentUserRole=0;
         public ProductList()
         {
             InitializeComponent();

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:UPprog.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Autarization">
+      Title="Autarization"
+      >
 
     <Grid>
         <TextBox x:Name="Login" HorizontalAlignment="Left" Margin="262,183,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
