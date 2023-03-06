@@ -20,9 +20,13 @@ namespace UPprog
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Frame frame;
         public MainWindow()
         {
             InitializeComponent();
+            frame = WindowFrame;
         }
+
+
     }
 }
