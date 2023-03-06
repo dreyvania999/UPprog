@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UPprog"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Пиши-стирай" Height="450" Width="800" Icon="/Resourses/logo.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <Frame x:Name="WindowFrame" Grid.Row="1"></Frame>
+        <Button x:Name="ClientOrBack" Content="Войти как гость" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
