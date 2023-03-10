@@ -43,6 +43,7 @@
                     <ComboBoxItem Content="15% и более"/>
                 </ComboBox>
             </StackPanel>
+            <TextBlock x:Name="countProduct" Grid.Column="2" HorizontalAlignment="Left" Margin="70,77,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="197"/>
         </Grid>
         <ListView x:Name="lvListProducts" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemContainerStyle>
@@ -86,7 +87,7 @@
             </ListView.ContextMenu>
         </ListView>
         <Grid Grid.Row="2">
-            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Left" Click="btnBack_Click"/>
+            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Left" />
             <Button x:Name="btnBasket" Content="Просмотр корзины"  HorizontalAlignment="Center" Click="btnBasket_Click" Visibility="Collapsed"/>
         </Grid>
     </Grid>
