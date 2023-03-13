@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using UPprog.Pages;
 
 namespace UPprog
 {
@@ -15,23 +14,8 @@ namespace UPprog
         {
             InitializeComponent();
             DB = new Entities();
-            frame = WindowFrame;
-            frame.Navigate(new Autarization());
-        }
-
-        private void ClientOrBack_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (frame.Content.ToString() == "UPprog.Pages.Autarization")
-            {
-                ProductList.CurrentUserRole= 0;
-                frame.Navigate(new ProductList());
-            }
-            else
-            {
-                ProductList.CurrentUserRole = 0;
-                frame.Navigate(new Autarization());
-            }
+            frame = mainFrame;
+            _ = frame.Navigate(new Login());
         }
     }
 }

@@ -17,25 +17,29 @@ namespace UPprog
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Order = new HashSet<Order>();
+            this.OrderProduct = new HashSet<OrderProduct>();
         }
     
+        public int ID { get; set; }
         public string ProductArticleNumber { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public int ProductCategory { get; set; }
-        public byte[] ProductPhoto { get; set; }
+        public int UnitMeasurement { get; set; }
         public int ProductManufacturer { get; set; }
         public decimal ProductCost { get; set; }
-        public Nullable<byte> ProductDiscountAmount { get; set; }
+        public Nullable<int> ProductDiscountAmount { get; set; }
         public int ProductQuantityInStock { get; set; }
+        public Nullable<double> ProductDiscountMax { get; set; }
         public string ProductStatus { get; set; }
         public int ProductSuplers { get; set; }
+        public string ProductPhoto { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Suplers Suplers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+        public virtual Suplers Suplers { get; set; }
+        public virtual UnitsMeasurement UnitsMeasurement { get; set; }
     }
 }

@@ -4,25 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f809977f70b14c2cb0dabc8cd7ab2f01" Name="Diagram1">
-        <EntityTypeShape EntityType="practic6Model.Category" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Manufacturer" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Order" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.PickupPoin" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Status" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.Suplers" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic6Model.User" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <AssociationConnector Association="practic6Model.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK_Product_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK_Order_PickupPoin" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK_Order_Status" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK_Order_User" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK_Product_Suplers" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.FK__User__UserRole__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="practic6Model.OrderProduct" ManuallyRouted="false" />
+      <Diagram DiagramId="f809977f70b14c2cb0dabc8cd7ab2f01" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="practic6Model.Category" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="practic6Model.Manufacturer" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="practic6Model.Order" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="practic6Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" />
+        <EntityTypeShape EntityType="practic6Model.PickupPoint" Width="1.5" PointX="0.75" PointY="17" />
+        <EntityTypeShape EntityType="practic6Model.Product" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="practic6Model.Role" Width="1.5" PointX="1.5" PointY="20" />
+        <EntityTypeShape EntityType="practic6Model.Status" Width="1.5" PointX="0.75" PointY="23.375" />
+        <EntityTypeShape EntityType="practic6Model.Suplers" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="practic6Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="practic6Model.UnitsMeasurement" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="practic6Model.User" Width="1.5" PointX="0.75" PointY="13.5" />
+        <AssociationConnector Association="practic6Model.FK_Product_Category" />
+        <AssociationConnector Association="practic6Model.FK_Product_Manufacturer" />
+        <AssociationConnector Association="practic6Model.FK__OrderProd__Order__7B5B524B" />
+        <AssociationConnector Association="practic6Model.FK_Order_PickupPoin" />
+        <AssociationConnector Association="practic6Model.FK_Order_Status" />
+        <AssociationConnector Association="practic6Model.FK_Order_User" />
+        <AssociationConnector Association="practic6Model.FK_OrderProduct_Product" />
+        <AssociationConnector Association="practic6Model.FK_Product_Suplers" />
+        <AssociationConnector Association="practic6Model.FK_Product_UnitsMeasurement" />
+        <AssociationConnector Association="practic6Model.FK__User__UserRole__5DCAEF64" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

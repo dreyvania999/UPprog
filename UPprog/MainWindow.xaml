@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="Пиши-стирай" Height="450" Width="800" Icon="/Resourses/logo.png">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="9*"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Frame x:Name="WindowFrame" Grid.Row="1"></Frame>
-        <Button x:Name="ClientOrBack" Content="Войти как гость" HorizontalAlignment="Left" Margin="658,10,0,0" VerticalAlignment="Top" Click="ClientOrBack_Click"/>
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                <Image Source="/Resourses/logo.png" Height="70"/>
+                <TextBlock Text="ООО «Пиши-стирай»" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+            </StackPanel>
+            <Frame x:Name="mainFrame" Grid.Row="1" NavigationUIVisibility="Hidden">
+            </Frame>
+        </Grid>
     </Grid>
 </Window>

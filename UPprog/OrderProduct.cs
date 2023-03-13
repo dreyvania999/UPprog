@@ -12,19 +12,14 @@ namespace UPprog
     using System;
     using System.Collections.Generic;
     
-    public partial class PickupPoin
+    public partial class OrderProduct
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PickupPoin()
-        {
-            this.Order = new HashSet<Order>();
-        }
-    
         public int ID { get; set; }
-        public string Adress { get; set; }
-        public string Index { get; set; }
+        public int OrderID { get; set; }
+        public int Count { get; set; }
+        public int ProductArticleNumber { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

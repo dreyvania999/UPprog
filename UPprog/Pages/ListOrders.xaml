@@ -1,0 +1,98 @@
+﻿<Page x:Class="UPprog.ListOrders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UPprog"
+      
+      
+      Title="Список заказов">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10">
+                <TextBlock Text="Сортировка" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="cbSort">
+                    <ComboBoxItem Content="Без сортировки"/>
+                    <ComboBoxItem Content="По возрастанию стоимости"/>
+                    <ComboBoxItem Content="По убыванию стоимости"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Фильтрация" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="cbFilt">
+                    <ComboBoxItem Content="Все диапазоны"/>
+                    <ComboBoxItem Content="0-9,99%"/>
+                    <ComboBoxItem Content="10-14,99%"/>
+                    <ComboBoxItem Content="15% и более"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+        <ListView x:Name="lvListOrders" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383">
+                        <Grid>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Номер:" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding OrderCode}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Дата заказа:" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding OrderDate, StringFormat=d}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="Дата доставки:" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding OrderDeliveryDate, StringFormat=d}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="Состав заказа: "/>
+                                    <TextBlock Text="{Binding OrderList}"/>
+                                </StackPanel>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Сумма заказа:" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Summa, StringFormat={}{0}руб.}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Discount, StringFormat={}{0}%}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                                <TextBlock Text="{Binding User.FIO, StringFormat={}Клиент: {0}}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="3">
+            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Left" Click="btnBack_Click"/>
+        </Grid>
+    </Grid>
+</Page>

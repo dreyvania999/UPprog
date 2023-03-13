@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
-using UPprog.Pages;
 
 namespace UPprog
 {
     public partial class Product
     {
-
-        public double costWithDiscount
+        public SolidColorBrush colorBackground
         {
             get
             {
-                return (double)(Convert.ToDouble(ProductCost) - (Convert.ToDouble(ProductCost) * ProductDiscountAmount / 100));
+                if (ProductDiscountAmount > 15)
+                {
+                    SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFromString("#7fff00");
+                    return color;
+                }
+                return Brushes.White;
             }
         }
+        public double costWithDiscount => (double)(Convert.ToDouble(ProductCost) - (Convert.ToDouble(ProductCost) * ProductDiscountAmount / 100));
 
+        public string costWithDiscountString => ProductDiscountAmount != 0 ? costWithDiscount.ToString("0.00") : "";
+
+        public string textDecoration => ProductDiscountAmount != 0 ? "Strikethrough" : "Baseline";
     }
 }
-

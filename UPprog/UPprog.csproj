@@ -41,9 +41,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -67,7 +74,9 @@
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\PartialOrder.cs" />
     <Compile Include="Classes\PartialProduct.cs" />
+    <Compile Include="Classes\ProductBasket.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -79,17 +88,19 @@
     <Compile Include="Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Autarization.xaml.cs">
-      <DependentUpon>Autarization.xaml</DependentUpon>
+    <Compile Include="OrderProduct.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Basket.cs" />
-    <Compile Include="Pages\ProductList.xaml.cs">
-      <DependentUpon>ProductList.xaml</DependentUpon>
+    <Compile Include="Pages\ListOrders.xaml.cs">
+      <DependentUpon>ListOrders.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Terminal.xaml.cs">
-      <DependentUpon>Terminal.xaml</DependentUpon>
+    <Compile Include="Pages\ListProduct.xaml.cs">
+      <DependentUpon>ListProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PickupPoin.cs">
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PickupPoint.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
@@ -107,8 +118,20 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitsMeasurement.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windowses\Basket.xaml.cs">
+      <DependentUpon>Basket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windowses\CAPTCHA.xaml.cs">
+      <DependentUpon>CAPTCHA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windowses\Ticket.xaml.cs">
+      <DependentUpon>Ticket.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -122,17 +145,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Autarization.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\ListOrders.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ProductList.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\ListProduct.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Terminal.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windowses\Basket.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windowses\CAPTCHA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windowses\Ticket.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
