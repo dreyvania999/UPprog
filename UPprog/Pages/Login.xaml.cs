@@ -54,7 +54,7 @@ namespace UPprog
                 {
                     BtnAutorization.IsEnabled = false;
                     countTime = 10;
-                    TBNewCode.Text = "Повторно авторизоваться можно через " + countTime + " секунд";
+                    TBNewCode.Text = "Повторить попытку авторизации можно через " + countTime + " секунд";
                     TBNewCode.Visibility = Visibility.Visible;
                     disTimer.Start();
                 }
