@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ProductDescription" Type="nvarchar(max)" Nullable="false" />
@@ -60,7 +60,7 @@
           <Property Name="UnitMeasurement" Type="int" Nullable="false" />
           <Property Name="ProductManufacturer" Type="int" Nullable="false" />
           <Property Name="ProductCost" Type="decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProductDiscountAmount" Type="int" />
+          <Property Name="ProductDiscountAmount" Type="float" />
           <Property Name="ProductQuantityInStock" Type="int" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="float" />
           <Property Name="ProductStatus" Type="nvarchar(max)" />
@@ -405,7 +405,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -413,7 +413,7 @@
           <Property Name="UnitMeasurement" Type="Int32" Nullable="false" />
           <Property Name="ProductManufacturer" Type="Int32" Nullable="false" />
           <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ProductDiscountAmount" Type="Int32" />
+          <Property Name="ProductDiscountAmount" Type="Double" />
           <Property Name="ProductQuantityInStock" Type="Int32" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="Double" />
           <Property Name="ProductStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

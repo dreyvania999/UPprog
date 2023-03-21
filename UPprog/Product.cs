@@ -28,7 +28,7 @@ namespace UPprog
         public int UnitMeasurement { get; set; }
         public int ProductManufacturer { get; set; }
         public decimal ProductCost { get; set; }
-        public Nullable<int> ProductDiscountAmount { get; set; }
+        public Nullable<double> ProductDiscountAmount { get; set; }
         public int ProductQuantityInStock { get; set; }
         public Nullable<double> ProductDiscountMax { get; set; }
         public string ProductStatus { get; set; }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UPprog"
-        
+        mc:Ignorable="d" Icon="\Resourses\Icon.ico" Style="{StaticResource WindowsMain}"
         Title="Корзина" Height="700" Width="1100" MinHeight="650" MinWidth="1100">
     <Window.Resources>
         <BitmapImage x:Key="defaultImage" UriSource="../Resourses/picture.png"/>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <TextBlock Text="Корзина" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock x:Name="tbFIO"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TBFIO"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10"/>
         </Grid>
         <ListView x:Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemContainerStyle>
@@ -54,7 +54,7 @@
                                     <TextBlock Text="Количество: "/>
                                     <TextBox Uid="{Binding product.ID}" Text="{Binding count}" MinWidth="100" PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
                                 </StackPanel>
-                                <Button x:Name="btnDelete" Uid="{Binding product.ID}" Content="Убрать из корзины"  HorizontalAlignment="Left" Click="btnDelete_Click"/>
+                                <Button x:Name="ButonDelete" Uid="{Binding product.ID}" Content="Убрать из корзины" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonDelete_Click"/>
                             </WrapPanel>
                         </Grid>
                     </Border>
@@ -66,16 +66,16 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="tbSumma" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
-            <TextBlock x:Name="tbSummaDiscount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+            <TextBlock x:Name="TBSumma" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+            <TextBlock x:Name="TBSummaDiscount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <TextBlock Text="Пункт выдачи: " Margin="10"/>
             <ComboBox Name="cmbPickupPoint" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="600"/>
         </StackPanel>
         <Grid Grid.Row="4">
-            <Button x:Name="btnBack" Content="Назад"  HorizontalAlignment="Left" Click="btnBack_Click"/>
-            <Button x:Name="btnBasket" Content="Оформить заказ"  HorizontalAlignment="Center" Click="btnBasket_Click"/>
+            <Button x:Name="ButonBack" Content="Назад" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBack_Click"/>
+            <Button x:Name="ButonBasket" Content="Оформить заказ" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Click="ButonBasket_Click"/>
         </Grid>
     </Grid>
 </Window>

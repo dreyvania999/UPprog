@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UPprog"
-      
-      
+      mc:Ignorable="d" Style="{StaticResource PageMain}"
+      d:DesignHeight="720" d:DesignWidth="1200"
       Title="Авторизация">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -15,16 +15,16 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1" Margin="40">
                     <GroupBox Header="Введите логин" FontSize="28">
-                        <TextBox x:Name="tbLogin" MaxLength="50" MinWidth="300"/>
+                        <TextBox x:Name="TBLogin" MaxLength="50" MinWidth="300"/>
                     </GroupBox>
                     <GroupBox Header="Введите пароль" FontSize="28">
                         <PasswordBox x:Name="pbPassword" MinWidth="300"/>
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
-                    <Button x:Name="BtnAutorization" Content="Авторизироваться"  Click="BtnAutorization_Click" FontSize="26"/>
-                    <Button x:Name="BtnGuest" Content="Войти как гость"  Click="BtnGuest_Click" Cursor="Hand" FontSize="26"/>
-                    <TextBlock x:Name="tbNewCode" FontSize="18" TextWrapping="Wrap" Visibility="Collapsed"/>
+                    <Button x:Name="BtnAutorization" Content="Авторизироваться" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" Click="BtnAutorization_Click" FontSize="26"/>
+                    <Button x:Name="BtnGuest" Content="Войти как гость" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" Click="BtnGuest_Click" Cursor="Hand" FontSize="26"/>
+                    <TextBlock x:Name="TBNewCode" FontSize="18" TextWrapping="Wrap" Visibility="Collapsed"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

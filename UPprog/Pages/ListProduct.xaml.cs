@@ -11,43 +11,44 @@ namespace UPprog
     /// </summary>
     public partial class ListProduct : Page
     {
-        private readonly List<ProductBasket> basket = new List<ProductBasket>();
-        private readonly User user;
+
+        private readonly User CurrentUser;
+        /// <summary>
+        /// Метод лоя начала работы страницы посте проходжения авторизации
+        /// </summary>
+        /// <param name="user"> авторизированный польлзователь</param>
         public ListProduct(User user)
         {
             InitializeComponent();
-            this.user = user;
-            CreatingFields();
-            tbFIO.Text = "" + user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
-            if (user.Role.RoleName == "Менеджер" || user.Role.RoleName == "Администратор")
+            CurrentUser = user;
+            ControlsEdit();
+            TBFIO.Text = CurrentUser.FIO;
+            if (CurrentUser.Role.RoleID == 2 || CurrentUser.Role.RoleID == 3)// отображение кнопок в зависимости от роли пользователя
             {
-                btnOrders.Visibility = Visibility.Visible;
+                ButonOrders.Visibility = Visibility.Visible;
             }
         }
+        /// <summary>
+        /// Метод для начала работы если пользователь не стал проходить авторизацию
+        /// </summary>
         public ListProduct()
         {
             InitializeComponent();
-            CreatingFields();
+            ControlsEdit();
         }
-
-        public void CreatingFields()
-        {
-            lvListProducts.ItemsSource = MainWindow.DB.Product.ToList();
-            cbFilt.SelectedIndex = 0;
-            cbSort.SelectedIndex = 0;
-            tbCountProduct.Text = "" + MainWindow.DB.Product.ToList().Count() + " из " + MainWindow.DB.Product.ToList().Count();
-        }
-
+        /// <summary>
+        /// Метод для фильтрации, поиска и сортировки
+        /// </summary>
         public void Filter()
         {
             List<Product> products = MainWindow.DB.Product.ToList();
-            if (tbSearch.Text.Length > 0)
+            if (TBSearch.Text.Length > 0)
             {
-                products = products.Where(x => x.ProductName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+                products = products.Where(x => x.ProductName.ToLower().Contains(TBSearch.Text.ToLower())).ToList();
             }
-            if (cbFilt.SelectedIndex > 0)
+            if (ComboFilt.SelectedIndex > 0)
             {
-                switch (cbFilt.SelectedIndex)
+                switch (ComboFilt.SelectedIndex)
                 {
                     case 1:
                         products = products.Where(x => x.ProductDiscountAmount > 0 && x.ProductDiscountAmount < 9.99).ToList();
@@ -60,9 +61,9 @@ namespace UPprog
                         break;
                 }
             }
-            if (cbSort.SelectedIndex > 0)
+            if (ComboSort.SelectedIndex > 0)
             {
-                switch (cbSort.SelectedIndex)
+                switch (ComboSort.SelectedIndex)
                 {
                     case 1:
                         products = products.OrderBy(x => x.costWithDiscount).ToList();
@@ -72,42 +73,42 @@ namespace UPprog
                         break;
                 }
             }
-            lvListProducts.ItemsSource = products;
+            ListVProducts.ItemsSource = products;
             if (products.Count == 0)
             {
                 _ = MessageBox.Show("Данные не найдены");
             }
-            tbCountProduct.Text = "" + products.Count() + " из " + MainWindow.DB.Product.ToList().Count();
+            TBCountProduct.Text = "" + products.Count() + " из " + MainWindow.DB.Product.ToList().Count();
         }
 
-        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void TBSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter();
         }
 
-        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Filter();
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void ButonBack_Click(object sender, RoutedEventArgs e)
         {
             _ = MainWindow.frame.Navigate(new Login());
         }
-
+        private readonly List<ProductBasket> basket = new List<ProductBasket>();
         private void miAddBasket_Click(object sender, RoutedEventArgs e)
         {
-            Product x = (Product)lvListProducts.SelectedItem;
-            bool stock = false;
+            Product x = (Product)ListVProducts.SelectedItem;
+            bool stock = false; // Наличие товара (true - товар есть; false - товара нет)
             foreach (ProductBasket productBasket in basket)
             {
-                if (productBasket.product == x)
+                if (productBasket.product == x) // Увеличение колличества товара в корзине на +1
                 {
                     productBasket.count = productBasket.count += 1;
                     stock = true;
                 }
             }
-            if (!stock)
+            if (!stock) // Добавление нового товара в корзину
             {
                 ProductBasket product = new ProductBasket
                 {
@@ -116,38 +117,34 @@ namespace UPprog
                 };
                 basket.Add(product);
             }
-            btnBasket.Visibility = Visibility.Visible;
+            ButonBasket.Visibility = Visibility.Visible;
         }
 
-        private void btnBasket_Click(object sender, RoutedEventArgs e)
+        private void ButonBasket_Click(object sender, RoutedEventArgs e)
         {
-            Basket basketWindow = new Basket(basket, user);
+            Basket basketWindow = new Basket(basket, CurrentUser);
             _ = basketWindow.ShowDialog();
             if (basket.Count == 0)
             {
-                btnBasket.Visibility = Visibility.Collapsed;
+                ButonBasket.Visibility = Visibility.Collapsed;
             }
         }
 
-        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        private void ButonOrders_Click(object sender, RoutedEventArgs e)
         {
-            _ = MainWindow.frame.Navigate(new ListOrders());
+            _ = CurrentUser != null ? MainWindow.frame.Navigate(new ListOrders(CurrentUser)) : MainWindow.frame.Navigate(new ListOrders());
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void ButonDelete_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Button btn = (Button)sender;
-                int index = Convert.ToInt32(btn.Uid);
+                Button Buton = (Button)sender;
+                int index = Convert.ToInt32(Buton.Uid);
                 Product product = MainWindow.DB.Product.FirstOrDefault(x => x.ID == index);
-                List<Order> orderProducts = MainWindow.DB.Order.Where(x => x.OrderID == index).ToList();
-                if (orderProducts.Count == 0)
+                List<OrderProduct> orderProducts = MainWindow.DB.OrderProduct.Where(x => x.ID == index).ToList();
+                if (orderProducts.Count == 0) // Если отсутсвуют заказы с таким товаром, то товар можно удалить
                 {
-                    foreach (Order orderProduct in orderProducts)
-                    {
-                        _ = MainWindow.DB.Order.Remove(orderProduct);
-                    }
                     _ = MainWindow.DB.Product.Remove(product);
                     _ = MainWindow.DB.SaveChanges();
                 }
@@ -163,14 +160,21 @@ namespace UPprog
             }
         }
 
-        private void btnDelete_Loaded(object sender, RoutedEventArgs e)
+        public void ControlsEdit()
         {
-            if (user == null)
+            ListVProducts.ItemsSource = MainWindow.DB.Product.ToList();
+            ComboFilt.SelectedIndex = 0;
+            ComboSort.SelectedIndex = 0;
+            TBCountProduct.Text = "" + MainWindow.DB.Product.ToList().Count() + " из " + MainWindow.DB.Product.ToList().Count();
+        }
+        private void ButonDelete_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (CurrentUser == null)
             {
                 return;
             }
-            Button btnDelete = sender as Button;
-            btnDelete.Visibility = user.Role.RoleName == "Менеджер" || user.Role.RoleName == "Администратор" ? Visibility.Visible : Visibility.Collapsed;
+            Button ButonDelete = sender as Button;
+            ButonDelete.Visibility = CurrentUser.Role.RoleID == 2 || CurrentUser.Role.RoleID == 3 ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

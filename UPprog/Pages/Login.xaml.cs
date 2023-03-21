@@ -13,7 +13,7 @@ namespace UPprog
     {
         private int kolError;
         public static bool correctValue;
-        private int countTime; // Время для повторного получения кода
+        private int countTime;
         private readonly DispatcherTimer disTimer = new DispatcherTimer();
         public Login()
         {
@@ -26,31 +26,37 @@ namespace UPprog
 
         private void BtnAutorization_Click(object sender, RoutedEventArgs e)
         {
-            User user = MainWindow.DB.User.FirstOrDefault(x => x.UserLogin == tbLogin.Text && x.UserPassword == pbPassword.Password);
+            User user = MainWindow.DB.User.FirstOrDefault(x => x.UserLogin == TBLogin.Text && x.UserPassword == pbPassword.Password);
             if (user != null)
-            {
-                _ = MainWindow.frame.Navigate(new ListProduct(user));
-            }
-            else
             {
                 if (kolError == 0)
                 {
-                    _ = MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
-                    kolError++;
+                    _ = MainWindow.frame.Navigate(new ListProduct(user));
                 }
                 else
                 {
                     CAPTCHA captcha = new CAPTCHA();
                     _ = captcha.ShowDialog();
-                    kolError++;
-                    if (!correctValue)
+                    if (correctValue)
                     {
-                        BtnAutorization.IsEnabled = false;
-                        countTime = 10;
-                        tbNewCode.Text = "Получить новый код можно будет через " + countTime + " секунд";
-                        tbNewCode.Visibility = Visibility.Visible;
-                        disTimer.Start();
+                        _ = MainWindow.frame.Navigate(new ListProduct(user));
                     }
+                }
+            }
+            else
+            {
+                _ = MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
+                correctValue = false;
+                CAPTCHA captcha = new CAPTCHA();
+                _ = captcha.ShowDialog();
+                kolError++;
+                if (!correctValue) // Если капча не пройдена
+                {
+                    BtnAutorization.IsEnabled = false;
+                    countTime = 10;
+                    TBNewCode.Text = "Повторно авторизоваться можно через " + countTime + " секунд";
+                    TBNewCode.Visibility = Visibility.Visible;
+                    disTimer.Start();
                 }
             }
         }
@@ -65,11 +71,11 @@ namespace UPprog
             {
                 BtnAutorization.IsEnabled = true;
                 disTimer.Stop();
-                tbNewCode.Visibility = Visibility.Collapsed;
+                TBNewCode.Visibility = Visibility.Collapsed;
             }
             else
             {
-                tbNewCode.Text = "Получить новый код можно будет через " + countTime + " секунд";
+                TBNewCode.Text = "Повторно авторизоваться можно через " + countTime + " секунд";
             }
             countTime--;
         }

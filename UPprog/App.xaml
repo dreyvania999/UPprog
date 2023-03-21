@@ -4,6 +4,42 @@
              xmlns:local="clr-namespace:UPprog"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate x:Key="CTButonMainPage" TargetType="Button">
+            <Border CornerRadius="5" BorderBrush="Black" BorderThickness="1" Background="{TemplateBinding Background}">
+                <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+        <Style x:Key="BtnStyle" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Background" Value="#FF76E383"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#FF498C51"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="BtnMain" TargetType="Button" BasedOn="{StaticResource BtnStyle}">
+            <Style.Setters>
+                <Setter Property="Width" Value="260"/>
+                <Setter Property="Height" Value="50"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="BtnOrder" TargetType="Button" BasedOn="{StaticResource BtnStyle}">
+            <Style.Setters>
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="50"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="WindowsMain" TargetType="Window">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style x:Key="PageMain" TargetType="Page">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
     </Application.Resources>
 </Application>

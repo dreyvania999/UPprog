@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UPprog"
-        
+        mc:Ignorable="d" Icon="\Resourses\Icon.ico" Style="{StaticResource WindowsMain}"
         Title="Подтверждение входа" Height="450" Width="800" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,8 +19,8 @@
 
         </Canvas>
         <StackPanel Grid.Row="2" Orientation="Vertical">
-            <TextBox x:Name="tbInputField" FontSize="24" Margin="200, 10, 200, 10" MaxLength="50"/>
-            <Button x:Name="BtnGo" Content="Отправить"  Click="BtnGo_Click"/>
+            <TextBox x:Name="TBInputField" FontSize="24" Margin="200, 10, 200, 10" MaxLength="50"/>
+            <Button x:Name="BtnGo" Content="Отправить" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" Click="BtnGo_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f809977f70b14c2cb0dabc8cd7ab2f01" Name="Diagram1" ZoomLevel="40">
-        <EntityTypeShape EntityType="practic6Model.Category" Width="1.5" PointX="0.75" PointY="2.625" />
-        <EntityTypeShape EntityType="practic6Model.Manufacturer" Width="1.5" PointX="0.75" PointY="8.125" />
+      <Diagram DiagramId="f809977f70b14c2Combo0dabc8cd7ab2f01" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="practic6Model.Category" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="practic6Model.Manufacturer" Width="1.5" PointX="0.75" PointY="2.625" />
         <EntityTypeShape EntityType="practic6Model.Order" Width="1.5" PointX="3" PointY="15.5" />
         <EntityTypeShape EntityType="practic6Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" />
         <EntityTypeShape EntityType="practic6Model.PickupPoint" Width="1.5" PointX="0.75" PointY="17" />
         <EntityTypeShape EntityType="practic6Model.Product" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="practic6Model.Role" Width="1.5" PointX="1.5" PointY="20" />
         <EntityTypeShape EntityType="practic6Model.Status" Width="1.5" PointX="0.75" PointY="23.375" />
-        <EntityTypeShape EntityType="practic6Model.Suplers" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="practic6Model.Suplers" Width="1.5" PointX="0.75" PointY="8.125" />
         <EntityTypeShape EntityType="practic6Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
         <EntityTypeShape EntityType="practic6Model.UnitsMeasurement" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="practic6Model.User" Width="1.5" PointX="0.75" PointY="13.5" />

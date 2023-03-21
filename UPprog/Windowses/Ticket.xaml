@@ -4,43 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UPprog"
-        
-        Title="Талон" Height="550" MinHeight="550" Width="900" MinWidth="900">
+        mc:Ignorable="d" Icon="\Resourses\Icon.ico" Style="{StaticResource WindowsMain}"
+        Title="Талон" Height="600" MinHeight="600" Width="900" MinWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Grid>
-            <StackPanel Orientation="Vertical" Margin="10">
-                <TextBlock Text="Талон для получения заказа" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="tbOrderNomer" Text="Номер заказа: " Grid.Column="0" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="tbDateOrder" Text="Дата заказа: " Grid.Column="1" HorizontalAlignment="Center"/>
-                </Grid>
-                <TextBlock Text="Состав заказа:"/>
-                <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="140">
-                    <TextBlock x:Name="tbOrders" ScrollViewer.CanContentScroll="True"/>
-                </ScrollViewer>
-                <Grid Margin="0, 20, 0, 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="tbSumma" Text="Сумма заказа: " Grid.Column="0" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="tbSummaDiscount" Text="Сумма скидки: " Grid.Column="1" HorizontalAlignment="Center"/>
-                </Grid>
-                <TextBlock x:Name="tbOrderPickupPoint" Text="Пункт выдачи: " TextWrapping="Wrap"/>
-                <TextBlock x:Name="tbCode" Text="Код получения: " FontSize="28" FontWeight="Bold"/>
-            </StackPanel>
+            <ScrollViewer>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock Text="Талон для получения заказа" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="TBOrderNomer" Text="Номер заказа: " Grid.Column="0" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="TBDateOrder" Text="Дата заказа: " Grid.Column="1" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <TextBlock Text="Состав заказа:"/>
+                    <TextBlock x:Name="TBOrders"/>
+                    <Grid Margin="0, 20, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="TBSumma" Text="Сумма заказа: " Grid.Column="0" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="TBSummaDiscount" Text="Сумма скидки: " Grid.Column="1" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <TextBlock x:Name="TBOrderPickupPoint" Text="Пункт выдачи: " TextWrapping="Wrap"/>
+                    <TextBlock x:Name="TBDeliveryDate" Text="Заказ будет готов через " TextWrapping="Wrap"/>
+                    <TextBlock x:Name="TBCode" Text="Код получения: " FontSize="28" FontWeight="Bold"/>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
         <Grid Grid.Row="1">
-            <Button x:Name="btnBack" Content="Закрыть"  HorizontalAlignment="Left" Click="btnBack_Click"/>
-            <Button x:Name="btnBasket" Content="Сохранить в pdf."   HorizontalAlignment="Center" Click="btnBasket_Click"/>
+            <Button x:Name="ButonBack" Content="Закрыть" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBack_Click"/>
+            <Button x:Name="ButonBasket" Content="Сохранить в pdf." Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Click="ButonBasket_Click"/>
         </Grid>
     </Grid>
 </Window>

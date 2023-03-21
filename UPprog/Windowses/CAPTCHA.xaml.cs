@@ -90,7 +90,7 @@ namespace UPprog
         }
         private void BtnGo_Click(object sender, RoutedEventArgs e)
         {
-            if (tbInputField.Text == text)
+            if (TBInputField.Text == text)
             {
                 Login.correctValue = true;
                 Close();

@@ -13,42 +13,44 @@ namespace UPprog
     /// </summary>
     public partial class Basket : Window
     {
-        private double summa;
-        private double summaDiscount;
-        private readonly User user;
-        private readonly List<ProductBasket> bascet;
+        private double summa; // Сумма заказа
+        private double summaDiscount; // Сумма скидок
+        private readonly User user; // Пользователь под которым произведён вход
+        private readonly List<ProductBasket> bascet; // Корзина
         public Basket(List<ProductBasket> bascet, User user)
         {
             InitializeComponent();
             if (user != null)
             {
-                tbFIO.Text = "" + user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                TBFIO.Text = "" + user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
             }
             this.bascet = bascet;
             this.user = user;
             lvProduct.ItemsSource = bascet;
             calculateSummaAndDiscount();
             cmbPickupPoint.ItemsSource = MainWindow.DB.PickupPoint.ToList();
-            cmbPickupPoint.SelectedValuePath = "OrderPickupPointID";
-            cmbPickupPoint.DisplayMemberPath = "OrderPickupPoint";
+            cmbPickupPoint.SelectedValuePath = "ID";
+            cmbPickupPoint.DisplayMemberPath = "Adress";
             cmbPickupPoint.SelectedIndex = 0;
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void ButonBack_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void btnBasket_Click(object sender, RoutedEventArgs e)
+        private void ButonBasket_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Order order = new Order();
-                List<Order> orderLast = MainWindow.DB.Order.OrderBy(x => x.OrderCode).ToList();
-                order.OrderCode = orderLast[orderLast.Count - 1].OrderCode + 1;
+                int countDay = 0; // Колличество дней на доставку
+                List<Order> orderLast = MainWindow.DB.Order.OrderBy(x => x.OrderNomer).ToList();
+                order.OrderNomer = orderLast[orderLast.Count - 1].OrderNomer + 1;
                 order.OrderStatus = MainWindow.DB.Status.FirstOrDefault(x => x.Title == "Новый").ID;
                 order.OrderDate = DateTime.Now;
-                order.OrderDeliveryDate = getDeliveryTime() ? order.OrderDate.AddDays(6) : order.OrderDate.AddDays(3);
+                countDay = getDeliveryTime() ? 6 : 3;
+                order.OrderDeliveryDate = order.OrderDate.AddDays(countDay);
                 order.OrderPickupPoint = ((PickupPoint)cmbPickupPoint.SelectedItem).ID;
                 if (user != null)
                 {
@@ -68,14 +70,14 @@ namespace UPprog
                     OrderProduct orderProduct = new OrderProduct
                     {
                         OrderID = order.OrderID,
-                        ID = productBasket.product.ID,
+                        ProductArticleNumber = productBasket.product.ID,
                         Count = productBasket.count
                     };
                     _ = MainWindow.DB.OrderProduct.Add(orderProduct);
                 }
                 _ = MainWindow.DB.SaveChanges();
                 _ = MessageBox.Show("Заказ успешно создан");
-                Ticket ticket = new Ticket(order, bascet, summa, summaDiscount);
+                Ticket ticket = new Ticket(order, bascet, summa, summaDiscount, countDay);
                 _ = ticket.ShowDialog();
                 bascet.Clear();
                 Close();
@@ -86,11 +88,15 @@ namespace UPprog
             }
         }
 
+        /// <summary>
+        /// Определение срока доставки
+        /// </summary>
+        /// <returns></returns>
         private bool getDeliveryTime()
         {
             foreach (ProductBasket productBasket in bascet)
             {
-                if (productBasket.product.ProductQuantityInStock < 3 || productBasket.product.ProductQuantityInStock < productBasket.count)
+                if (productBasket.product.ProductQuantityInStock < 3 || productBasket.product.ProductQuantityInStock < productBasket.count) // Если товара на складе меньше 3 или он отсутсвует для продажи текущего колличества, то заказ будет доставляяться 6 дней
                 {
                     return true;
                 }
@@ -106,10 +112,10 @@ namespace UPprog
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void ButonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-            int index = Convert.ToInt32(btn.Uid);
+            Button Buton = (Button)sender;
+            int index = Convert.ToInt32(Buton.Uid);
             ProductBasket productBasket = bascet.FirstOrDefault(x => x.product.ID == index);
             _ = bascet.Remove(productBasket);
             if (bascet.Count == 0)
@@ -120,6 +126,9 @@ namespace UPprog
             calculateSummaAndDiscount();
         }
 
+        /// <summary>
+        /// Подсчёт суммы заказа и скидок
+        /// </summary>
         private void calculateSummaAndDiscount()
         {
             summa = 0;
@@ -129,21 +138,21 @@ namespace UPprog
                 summa += productBasket.count * productBasket.product.costWithDiscount;
                 summaDiscount += productBasket.count * ((double)productBasket.product.ProductCost - productBasket.product.costWithDiscount);
             }
-            tbSumma.Text = "Сумма заказа: " + summa.ToString("0.00") + " руб.";
-            tbSummaDiscount.Text = "Сумма скидки: " + summaDiscount.ToString("0.00") + " руб.";
+            TBSumma.Text = "Сумма заказа: " + summa.ToString("0.00") + " руб.";
+            TBSummaDiscount.Text = "Сумма скидки: " + summaDiscount.ToString("0.00") + " руб.";
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            int index = Convert.ToInt32(tb.Uid);
+            TextBox TB = (TextBox)sender;
+            int index = Convert.ToInt32(TB.Uid);
             ProductBasket productBasket = bascet.FirstOrDefault(x => x.product.ID == index);
-            productBasket.count = tb.Text.Replace(" ", "") == "" ? 0 : Convert.ToInt32(tb.Text);
-            if (productBasket.count == 0)
+            productBasket.count = TB.Text.Replace(" ", "") == "" ? 0 : Convert.ToInt32(TB.Text);
+            if (productBasket.count == 0) // Если колличество 0, то продукт из корзины удаляется
             {
                 _ = bascet.Remove(productBasket);
             }
-            if (bascet.Count == 0)
+            if (bascet.Count == 0) // Если в корзине нет товаров, то окно закрывается
             {
                 Close();
             }
