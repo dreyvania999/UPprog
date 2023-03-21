@@ -44,7 +44,7 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" Background="{Binding colorBackground}">
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF76E383" >
                         <StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -89,7 +89,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="ButonChangeStatus" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить статус" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Width="300" Click="ButonChangeStatus_Click"/>
+                                <Button x:Name="ButonChangeStatus" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Right" Width="300" Click="ButonChangeStatus_Click"/>
                             </Grid>
                         </StackPanel>
                     </Border>

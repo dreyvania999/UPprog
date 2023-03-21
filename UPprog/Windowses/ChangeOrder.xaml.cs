@@ -16,8 +16,8 @@ namespace UPprog
 
             _order = order;
             ComboStatus.ItemsSource = MainWindow.DB.Status.ToList();
-            ComboStatus.SelectedValuePath = "Id_status";
-            ComboStatus.DisplayMemberPath = "Status";
+            ComboStatus.SelectedValuePath = "ID";
+            ComboStatus.DisplayMemberPath = "Title";
 
             TBOrder.Text = "Заказ №" + order.OrderID;
             dpDate.SelectedDate = order.OrderDeliveryDate;

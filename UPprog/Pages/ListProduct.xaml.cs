@@ -99,10 +99,10 @@ namespace UPprog
         private void miAddBasket_Click(object sender, RoutedEventArgs e)
         {
             Product x = (Product)ListVProducts.SelectedItem;
-            bool stock = false; // Наличие товара (true - товар есть; false - товара нет)
+            bool stock = false; // Наличие товара
             foreach (ProductBasket productBasket in basket)
             {
-                if (productBasket.product == x) // Увеличение колличества товара в корзине на +1
+                if (productBasket.product == x)
                 {
                     productBasket.count = productBasket.count += 1;
                     stock = true;
@@ -142,7 +142,7 @@ namespace UPprog
                 Button Buton = (Button)sender;
                 int index = Convert.ToInt32(Buton.Uid);
                 Product product = MainWindow.DB.Product.FirstOrDefault(x => x.ID == index);
-                List<OrderProduct> orderProducts = MainWindow.DB.OrderProduct.Where(x => x.ID == index).ToList();
+                List<OrderProduct> orderProducts = MainWindow.DB.OrderProduct.Where(x => x.ProductArticleNumber == index).ToList();
                 if (orderProducts.Count == 0) // Если отсутсвуют заказы с таким товаром, то товар можно удалить
                 {
                     _ = MainWindow.DB.Product.Remove(product);

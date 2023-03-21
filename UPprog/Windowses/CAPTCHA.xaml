@@ -13,7 +13,7 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Подтвердите, что вы не робот введя текст с картинки в последовательности слева на право" FontSize="24" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="Введите такст с картинки" FontSize="24" TextWrapping="Wrap" TextAlignment="Center"/>
         </StackPanel>
         <Canvas x:Name="CvField" Width="600" Height="200" Grid.Row="1">
 

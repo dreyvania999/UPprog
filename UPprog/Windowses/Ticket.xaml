@@ -41,7 +41,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <Button x:Name="ButonBack" Content="Закрыть" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBack_Click"/>
-            <Button x:Name="ButonBasket" Content="Сохранить в pdf." Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Click="ButonBasket_Click"/>
+            <Button x:Name="ButonBasket" Content="Сохранить в pdf." Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Right" Click="ButonBasket_Click"/>
         </Grid>
     </Grid>
 </Window>

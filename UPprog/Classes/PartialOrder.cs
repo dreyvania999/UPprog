@@ -15,8 +15,8 @@ namespace UPprog
                 for (int i = 0; i < products.Count; i++)
                 {
                     orderList = i == products.Count - 1
-                        ? orderList + products[i].Product.ProductName + " Количество: " + products[i].Count
-                        : orderList + products[i].Product.ProductName + " Количество: " + products[i].Count + "\n";
+                        ? orderList + products[i].Product.ProductName + " количество: " + products[i].Count
+                        : orderList + products[i].Product.ProductName + " количество: " + products[i].Count + "\n";
                 }
                 return orderList;
             }

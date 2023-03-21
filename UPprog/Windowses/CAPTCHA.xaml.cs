@@ -38,11 +38,11 @@ namespace UPprog
                     }
                 }
             }
-            // Переменные для того, чтобы символы шли по порядку
-            int widthBegin = 0; // Начало отрезка
-            int widthEnd = 0; // Конец отрезка
+
+            int widthBegin = 0;
+            int widthEnd = 0;
             int h = (int)CvField.Width / text.Length; // Шаг разбиения
-            for (int i = 0; i < text.Length; i++) // Заполнение текста
+            for (int i = 0; i < text.Length; i++)
             {
                 if (i == 0) // Если первое разбиение
                 {
@@ -55,11 +55,11 @@ namespace UPprog
                 }
                 int height = rand.Next((int)CvField.Height);
                 int width = rand.Next(widthBegin, widthEnd);
-                if (height > 170) // Чтобы не выходило за пределы поля (30 - это самое большая высота символа)
+                if (height > 170)
                 {
                     height -= 30;
                 }
-                if (width > 590) // Чтобы не выходило за пределы поля (10 - это самое большая длина символа)
+                if (width > 590)
                 {
                     widthEnd -= 10;
                 }

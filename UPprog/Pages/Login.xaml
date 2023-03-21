@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UPprog"
       mc:Ignorable="d" Style="{StaticResource PageMain}"
-      d:DesignHeight="720" d:DesignWidth="1200"
+      d:DesignHeight="720" d:DesignWidth="1200"  
       Title="Авторизация">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -36,7 +36,7 @@
                 <TextBox x:Name="TBSearch" TextChanged="TBSearch_TextChanged"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="10">
-                <TextBlock Text="Сортировка" HorizontalAlignment="Center"/>
+                
                 <ComboBox x:Name="ComboSort" SelectionChanged="ComboSort_SelectionChanged">
                     <ComboBoxItem Content="Без сортировки"/>
                     <ComboBoxItem Content="По возрастанию стоимости"/>
@@ -44,7 +44,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Grid.Column="2" Margin="10">
-                <TextBlock Text="Фильтрация" HorizontalAlignment="Center"/>
+                
                 <ComboBox x:Name="ComboFilt" SelectionChanged="ComboSort_SelectionChanged">
                     <ComboBoxItem Content="Все диапазоны"/>
                     <ComboBoxItem Content="0-9,99%"/>
@@ -79,7 +79,7 @@
                                     <TextBlock Text=" "/>
                                     <TextBlock Text="{Binding costWithDiscountString}"/>
                                 </StackPanel>
-                                <Button x:Name="ButonDelete" Uid="{Binding ProductID}" Content="Удалить" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonDelete_Click" Loaded="ButonDelete_Loaded" Visibility="Collapsed"/>
+                                <Button x:Name="ButonDelete" Uid="{Binding ID}" Content="Удалить" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonDelete_Click" Loaded="ButonDelete_Loaded" Visibility="Collapsed"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="Скидка:" HorizontalAlignment="Center"/>

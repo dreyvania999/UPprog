@@ -14,7 +14,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -69,13 +69,18 @@
             <TextBlock x:Name="TBSumma" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
             <TextBlock x:Name="TBSummaDiscount" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
         </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBlock Text="Пункт выдачи: " Margin="10"/>
-            <ComboBox Name="cmbPickupPoint" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="600"/>
+        <StackPanel Orientation="Vertical" Grid.Row="3" HorizontalAlignment="Center">
+            <GroupBox Header="Пункт выдачи:">
+                <ComboBox Name="cmbPickupPoint" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="600"/>
+            </GroupBox>
         </StackPanel>
         <Grid Grid.Row="4">
-            <Button x:Name="ButonBack" Content="Назад" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBack_Click"/>
-            <Button x:Name="ButonBasket" Content="Оформить заказ" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Click="ButonBasket_Click"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="224*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButonBack" Content="Назад" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBack_Click" Grid.ColumnSpan="2" Margin="10,0,0,0"/>
+            <Button x:Name="ButonBasket" Content="Оформить заказ" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="ButonBasket_Click" Grid.Column="1" Margin="216,0,0,0"/>
         </Grid>
     </Grid>
 </Window>
