@@ -25,8 +25,16 @@
 <br/>
 При переходе на страницу "Продажа" будут отображаться блоки с информацией о продажах товаров.
 <br/>
-Ссылка на 2 часть задания https://github.com/dreyvania999/UP_M
-## Авторы
+(Ссылка)[https://github.com/dreyvania999/Educational-practice-testing] на 2 часть задания 
+## Контактная ниформация
 
-* Студент ГБПОУ "Нижегородский Губернский Колледж" группы 41П **Дрей Иван** <br/>
 Больше проектов [здесь](https://github.com/dreyvania999)
+
+<div id="socials" align="center">
+	<a href="https://vk.com/id500044052">
+		<img src="https://img.shields.io/badge/VK-blue?style=for-the-badge&logo=VK&logoColor=white" alt="VK"/>
+	</a>
+	<a href="https://t.me/Iadrag">
+		<img src="https://img.shields.io/badge/Telegram-blue?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
+	</a>
+</div>
