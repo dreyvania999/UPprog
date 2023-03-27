@@ -25,7 +25,7 @@
 <br/>
 При переходе на страницу "Продажа" будут отображаться блоки с информацией о продажах товаров.
 <br/>
-(Ссылка)[https://github.com/dreyvania999/Educational-practice-testing] на 2 часть задания 
+[Ссылка на 2 часть задания](https://github.com/dreyvania999/Educational-practice-testing)
 ## Контактная ниформация
 
 Больше проектов [здесь](https://github.com/dreyvania999)
